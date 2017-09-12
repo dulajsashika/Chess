@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chess Game</title>
+
+    <style>
+        #btn-wallpaper{
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: black;
+            background-color: green;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        #btn-wallpaper:hover {background-color: yellow}
+
+        #btn-wallpaper:active {
+            background-color: blue;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+
+
+
+        #main-div{
+            margin: -100px auto;
+            width: 100px;
+            height: 700px;
+            perspective: 1700px;
+            perspective-origin: 100% 65%;
+        }
+
+        #board-div {
+            transform: rotateX(65deg);
+            background-color: black;
+            box-shadow: 0px 20px 10px 8px blue;
+
+            width: 500px;
+            height: 800px;
+        }
+
+
+        #div-1-1{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+        }
+        #div-1-2{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+        }
+        #div-1-3{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+        }
+        #div-1-4{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+        }
+        #div-1-5{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+        }
+        #div-1-6{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+        }
+        #div-1-7{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+        }
+        #div-1-8{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+        }
+
+
+        #div-2-1{
+            position: absolute;
+            display:inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            top: 100px;
+        }
+        #div-2-2{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            top: 100px;
+        }
+        #div-2-3{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            top: 100px;
+        }
+        #div-2-4{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            top: 100px;
+        }
+        #div-2-5{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            top: 100px;
+        }
+        #div-2-6{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+            top: 100px;
+        }
+        #div-2-7{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+            top: 100px;
+        }
+        #div-2-8{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+            top: 100px;
+        }
+
+
+        #div-3-1{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            top: 200px;
+        }
+        #div-3-2{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            top: 200px;
+        }
+        #div-3-3{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            top: 200px;
+        }
+        #div-3-4{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            top: 200px;
+        }
+        #div-3-5{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            top: 200px;
+        }
+        #div-3-6{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+            top: 200px;
+        }
+        #div-3-7{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+            top: 200px;
+        }
+        #div-3-8{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+            top: 200px;
+        }
+
+
+        #div-4-1{
+            position: absolute;
+            display:inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            top: 300px;
+        }
+        #div-4-2{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            top: 300px;
+        }
+        #div-4-3{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            top: 300px;
+        }
+        #div-4-4{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            top: 300px;
+        }
+        #div-4-5{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            top: 300px;
+        }
+        #div-4-6{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+            top: 300px;
+        }
+        #div-4-7{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+            top: 300px;
+        }
+        #div-4-8{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+            top: 300px;
+        }
+
+
+        #div-5-1{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            top: 400px;
+        }
+        #div-5-2{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            top: 400px;
+        }
+        #div-5-3{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            top: 400px;
+        }
+        #div-5-4{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            top: 400px;
+        }
+        #div-5-5{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            top: 400px;
+        }
+        #div-5-6{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+            top: 400px;
+        }
+        #div-5-7{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+            top: 400px;
+        }
+        #div-5-8{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+            top: 400px;
+        }
+
+
+        #div-6-1{
+            position: absolute;
+            display:inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            top: 500px;
+        }
+        #div-6-2{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            top: 500px;
+        }
+        #div-6-3{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            top: 500px;
+        }
+        #div-6-4{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            top: 500px;
+        }
+        #div-6-5{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            top: 500px;
+        }
+        #div-6-6{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+            top: 500px;
+        }
+        #div-6-7{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+            top: 500px;
+        }
+        #div-6-8{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+            top: 500px;
+        }
+
+
+        #div-7-1{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            top: 600px;
+        }
+        #div-7-2{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            top: 600px;
+        }
+        #div-7-3{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            top: 600px;
+        }
+        #div-7-4{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            top: 600px;
+        }
+        #div-7-5{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            top: 600px;
+        }
+        #div-7-6{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+            top: 600px;
+        }
+        #div-7-7{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+            top: 600px;
+        }
+        #div-7-8{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+            top: 600px;
+        }
+
+
+        #div-8-1{
+            position: absolute;
+            display:inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            top: 700px;
+
+        }
+        #div-8-2{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            top: 700px;
+        }
+        #div-8-3{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            top: 700px;
+        }
+        #div-8-4{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            top: 700px;
+        }
+        #div-8-5{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            top: 700px;
+        }
+        #div-8-6{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 312.5px;
+            top: 700px;
+        }
+        #div-8-7{
+            position: absolute;
+            display: inline-block;
+            background-color: whitesmoke;
+            width:62.5px;
+            height: 100px;
+            left: 375px;
+            top: 700px;
+        }
+        #div-8-8{
+            position: absolute;
+            display: inline-block;
+            background-color: black;
+            width:62.5px;
+            height: 100px;
+            left: 437.5px;
+            top: 700px;
+        }
+
+
+        #rook-white {
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(40deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -20px;
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #knight-white {
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+            transform: rotateX(-10deg);
+            transform: rotateY(-5deg);
+
+            margin-top: -20px;
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #bishop-white {
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+            transform: rotateX(20deg);
+            transform: rotateY(5deg);
+
+            margin-top: -20px;
+
+            perspective: 300px;
+            perspective-origin: 20% 80%;
+
+        }
+
+        #queen-white{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(-60deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -20px;
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+
+        #king-white {
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(-50deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -20px;
+
+            perspective: 300px;
+            perspective-origin: 20% 80%;
+
+        }
+        #bishop2-white {
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(-60deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -20px;
+
+            perspective: 100px;
+            perspective-origin: 10% 80%;
+
+        }
+        #knight2-white {
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+            transform: rotateX(60deg);
+            transform: rotateY(-5deg);
+
+            margin-top: -20px;
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #rook2-white {
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(40deg);
+            transform: rotateY(-5deg);
+            transform: rotateZ(-3deg);
+
+            margin-top: -20px;
+            margin-left: 3px ;
+
+            perspective: 200px;
+            perspective-origin: 20% 80%;
+
+        }
+
+        #pawn1-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn2-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn3-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn4-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn5-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn6-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn7-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn8-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -3px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+
+
+
+        #rook-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(60deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+
+            perspective: 500px;
+            perspective-origin: 50% 80%;
+
+        }
+        #knight-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(10deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+            perspective: 500px;
+            perspective-origin: 50% 80%;
+
+        }
+        #bishop-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(-10deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+            perspective: 500px;
+            perspective-origin: 50% 50%;
+
+        }
+        #queen-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(-10deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #king-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(-60deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #bishop2-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(-10deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+            perspective: 500px;
+            perspective-origin: 50% 50%;
+
+        }
+        #knight2-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(10deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+            perspective: 500px;
+            perspective-origin: 50% 80%;
+
+        }
+        #rook2-black {
+            width: 62.5px;
+            height: 150px;
+            position: absolute;
+
+            transform: rotateX(60deg);
+            transform: rotateY(-15deg);
+
+            margin-top: -65px;
+
+            perspective: 500px;
+            perspective-origin: 50% 80%;
+
+        }
+
+
+        #pawn1-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn2-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn3-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn4-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn5-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn6-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn7-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn8-black{
+            width: 62.5px;
+            height: 110px;
+            position: absolute;
+
+            transform: rotateX(15deg);
+
+            margin-top: -20px;
+
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+
+
+        #div-aside{
+            position: absolute;
+            height: 500px;
+            width: 313px;
+            margin: 50px auto;
+
+        }
+
+        #div_K1{
+            position: absolute;
+            display: inline;
+            width:62.5px;
+            height: 100px;
+        }
+        #div_K1_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            top: 105.5px;
+            background-color: white;
+        }
+
+        #div_K2{
+            position: absolute;
+            display: inline;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+        }
+        #div_K2_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            top: 105.5px;
+            left: 62.5px;
+            background-color: black;
+        }
+
+        #div_K3{
+            position: absolute;
+            display: inline-block;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+        }
+        #div_K3_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            top: 105.5px;
+            left: 125px;
+            background-color: white;
+        }
+
+        #div_K4{
+            position: absolute;
+            display: inline-block;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+        }
+        #div_K4_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            top: 105.5px;
+            left: 187.5px;
+            background-color: black;
+        }
+
+        #div_K5{
+            position: absolute;
+            display: inline-block;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+        }
+        #div_K5_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            top: 105.5px;
+            left: 250px;
+            background-color: white;
+        }
+
+        #rook_K-black {
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(60deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 50% 80%;
+
+        }
+        #knight_K-black {
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(10deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 50% 80%;
+
+        }
+        #bishop_K-black {
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-10deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 50% 50%;
+
+        }
+        #queen_K-black {
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-10deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn_K-black{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-10deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+
+
+
+        #div-2K-1{
+            position: absolute;
+            display: inline;
+            width:62.5px;
+            height: 100px;
+            bottom: 100px;
+        }
+        #div_2K1_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            bottom: 63.5px;
+            background-color: white;
+        }
+
+        #div-2K-2{
+            position: absolute;
+            display: inline;
+            width:62.5px;
+            height: 100px;
+            left: 62.5px;
+            bottom: 100px;
+        }
+        #div_2K2_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            bottom: 63.5px;
+            left: 62.5px;
+            background-color: black;
+        }
+
+        #div-2K-3{
+            position: absolute;
+            display: inline-block;
+            width:62.5px;
+            height: 100px;
+            left: 125px;
+            bottom: 100px;
+        }
+        #div_2K3_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            bottom: 63.5px;
+            left: 125px;
+            background-color: white;
+        }
+
+        #div-2K-4{
+            position: absolute;
+            display: inline-block;
+            width:62.5px;
+            height: 100px;
+            left: 187.5px;
+            bottom: 100px;
+        }
+        #div_2K4_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            bottom: 63.5px;
+            left: 187.5px;
+            background-color: black;
+        }
+
+        #div-2K-5{
+            position: absolute;
+            display: inline-block;
+            width:62.5px;
+            height: 100px;
+            left: 250px;
+            bottom: 100px;
+        }
+        #div_2K5_blank{
+            position: absolute;
+            display: block;
+            width:62.5px;
+            height: 30px;
+            bottom: 63.5px;
+            left: 250px;
+            background-color: white;
+        }
+
+
+
+        #rook_K-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(40deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #knight_K-white {
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-10deg);
+            transform: rotateY(-5deg);
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #bishop_K-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+            transform: rotateX(20deg);
+            transform: rotateY(5deg);
+
+            perspective: 300px;
+            perspective-origin: 20% 80%;
+
+        }
+        #queen_K-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-60deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #pawn_K-white{
+            width: 62.5px;
+            height: 100px;
+            position: absolute;
+
+            transform: rotateX(-70deg);
+            transform: rotateY(-15deg);
+
+            perspective: 500px;
+            perspective-origin: 20% 80%;
+
+        }
+        #board-div:after {
+            content: "";
+            position: absolute;
+            z-index: 5;
+            width: 460px;
+            height: 488px;
+            bottom: 5px;
+            left: 5px;
+
+
+        }
+
+
+    </style>
+
+</head>
+<body id="body" background="images/chess_board_party_glass_68393_1920x1080.jpeg">
+
+<button id="btn-wallpaper">Chess Bord</button>
+<aside id="aside-1">
+    <div id="div-aside">
+        <div id="div_K1"><img id="rook_K-black" src="images/rook1.png"></div>
+        <div id="div_K1_blank"></div>
+        <div id="div_K2"><img id="knight_K-black" src="images/knight1.png"></div>
+        <div id="div_K2_blank"></div>
+        <div id="div_K3"><img id="bishop_K-black" src="images/pawn1.png"></div>
+        <div id="div_K3_blank"></div>
+        <div id="div_K4"><img id="queen_K-black" src="images/queen1.png"></div>
+        <div id="div_K4_blank"></div>
+        <div id="div_K5"><img id="pawn_K-black" src="images/bishop1.png"></div>
+        <div id="div_K5_blank"></div>
+
+        <div id="div-2K-1"> <img id="rook_K-white" src="images/rook2.png"> </div>
+        <div id="div_2K1_blank"></div>
+        <div id="div-2K-2"><img id="knight_K-white" src="images/knight2.png"></div>
+        <div id="div_2K2_blank"></div>
+        <div id="div-2K-3"><img id="bishop_K-white" src="images/pawn2.png"></div>
+        <div id="div_2K3_blank"></div>
+        <div id="div-2K-4"><img id="queen_K-white" src="images/queen2.png"></div>
+        <div id="div_2K4_blank"></div>
+        <div id="div-2K-5"><img id="pawn_K-white" src="images/bishop2.png"></div>
+        <div id="div_2K5_blank"></div>
+    </div>
+</aside>
+<div id="main-div">
+    <div id="board-div">
+
+        <div id="div-1-1" class="chess-div"><img id="rook-black" class="black" src="images/rook2.png"></div>
+        <div id="div-1-2" class="chess-div"><img id="knight-black" class="black" src="images/knight2.png"></div>
+        <div id="div-1-3" class="chess-div"><img id="bishop-black" class="black" src="images/bishop2.png"></div>
+        <div id="div-1-4" class="chess-div"><img id="queen-black" class="black" src="images/king2.png"></div>
+        <div id="div-1-5" class="chess-div"><img id="king-black" class="black" src="images/queen2.png"></div>
+        <div id="div-1-6" class="chess-div"><img id="bishop2-black" class="black" src="images/bishop2.png"></div>
+        <div id="div-1-7" class="chess-div"><img id="knight2-black" class="black" src="images/knight2.png"></div>
+        <div id="div-1-8" class="chess-div"><img id="rook2-black" class="black" src="images/rook2.png"></div>
+
+        <div id="div-2-1" class="chess-div"><img id="pawn1-black" class="black" src="images/pawn2.png"></div>
+        <div id="div-2-2" class="chess-div"><img id="pawn2-black" class="black" src="images/pawn2.png"></div>
+        <div id="div-2-3" class="chess-div"><img id="pawn3-black" class="black" src="images/pawn2.png"></div>
+        <div id="div-2-4" class="chess-div"><img id="pawn4-black" class="black" src="images/pawn2.png"></div>
+        <div id="div-2-5" class="chess-div"><img id="pawn5-black" class="black" src="images/pawn2.png"></div>
+        <div id="div-2-6" class="chess-div"><img id="pawn6-black" class="black" src="images/pawn2.png"></div>
+        <div id="div-2-7" class="chess-div"><img id="pawn7-black" class="black" src="images/pawn2.png"></div>
+        <div id="div-2-8" class="chess-div"><img id="pawn8-black" class="black" src="images/pawn2.png"></div>
+
+        <div id="div-3-1" class="chess-div"></div>
+        <div id="div-3-2" class="chess-div"></div>
+        <div id="div-3-3" class="chess-div"></div>
+        <div id="div-3-4" class="chess-div"></div>
+        <div id="div-3-5" class="chess-div"></div>
+        <div id="div-3-6" class="chess-div"></div>
+        <div id="div-3-7" class="chess-div"></div>
+        <div id="div-3-8" class="chess-div"></div>
+
+        <div id="div-4-1" class="chess-div"></div>
+        <div id="div-4-2" class="chess-div"></div>
+        <div id="div-4-3" class="chess-div"></div>
+        <div id="div-4-4" class="chess-div"></div>
+        <div id="div-4-5" class="chess-div"></div>
+        <div id="div-4-6" class="chess-div"></div>
+        <div id="div-4-7" class="chess-div"></div>
+        <div id="div-4-8" class="chess-div"></div>
+
+        <div id="div-5-1" class="chess-div"></div>
+        <div id="div-5-2" class="chess-div"></div>
+        <div id="div-5-3" class="chess-div"></div>
+        <div id="div-5-4" class="chess-div"></div>
+        <div id="div-5-5" class="chess-div"></div>
+        <div id="div-5-6" class="chess-div"></div>
+        <div id="div-5-7" class="chess-div"></div>
+        <div id="div-5-8" class="chess-div"></div>
+
+        <div id="div-6-1" class="chess-div"></div>
+        <div id="div-6-2" class="chess-div"></div>
+        <div id="div-6-3" class="chess-div"></div>
+        <div id="div-6-4" class="chess-div"></div>
+        <div id="div-6-5" class="chess-div"></div>
+        <div id="div-6-6" class="chess-div"></div>
+        <div id="div-6-7" class="chess-div"></div>
+        <div id="div-6-8" class="chess-div"></div>
+
+        <div id="div-7-1" class="chess-div"><img id="pawn1-white" class="pawn-white" src="images/pawn1.png"></div>
+        <div id="div-7-2" class="chess-div"><img id="pawn2-white" class="pawn-white" src="images/pawn1.png"></div>
+        <div id="div-7-3" class="chess-div"><img id="pawn3-white" class="pawn-white" src="images/pawn1.png"></div>
+        <div id="div-7-4" class="chess-div"><img id="pawn4-white" class="pawn-white" src="images/pawn1.png"></div>
+        <div id="div-7-5" class="chess-div"><img id="pawn5-white" class="pawn-white" src="images/pawn1.png"></div>
+        <div id="div-7-6" class="chess-div"><img id="pawn6-white" class="pawn-white" src="images/pawn1.png"></div>
+        <div id="div-7-7" class="chess-div"><img id="pawn7-white" class="pawn-white" src="images/pawn1.png"></div>
+        <div id="div-7-8" class="chess-div"><img id="pawn8-white" class="pawn-white" src="images/pawn1.png"></div>
+
+        <div id="div-8-1" class="chess-div"> <img id="rook-white" src="images/rook1.png"> </div>
+        <div id="div-8-2" class="chess-div"><img id="knight-white" src="images/knight1.png"></div>
+        <div id="div-8-3" class="chess-div"><img id="bishop-white" src="images/bishop1.png"></div>
+        <div id="div-8-4" class="chess-div"><img id="queen-white" src="images/king1.png"></div>
+        <div id="div-8-5" class="chess-div"><img id="king-white" src="images/queen1.png"></div>
+        <div id="div-8-6" class="chess-div"><img id="bishop2-white" src="images/bishop1.png"></div>
+        <div id="div-8-7" class="chess-div"><img id="knight2-white" src="images/knight1.png"></div>
+        <div id="div-8-8" class="chess-div"> <img id="rook2-white" src="images/rook1.png"></div>
+
+    </div>
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/home_Controller.js"></script>
+</body>
+</html>
+
